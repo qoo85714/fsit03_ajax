@@ -23,7 +23,7 @@
 		console.log('ckAccount');
 		var accountVal = $("#account").val();
 		var param = {account:accountVal};
-		$.get("ckAccount.php",param,function(data){
+		$.get("http://10.21.100.66/brad/ckAccount.php",param,function(data){
 			var jsonObj = JSON.parse(data);
 			
 			if(jsonObj.result !=null && jsonObj.result == 0){
@@ -46,9 +46,9 @@
 		console.log('ckAccount');
 		var accountVal = $("#account").val();
 		$.ajax({
-			async:true,
+			async:false,
 			data:param,
-			url:"ckAccount.php",
+			url:"http://10.21.100.66/brad/ckAccount.php",
 			success:function(data,status,xhr){
 				var jsonObj = JSON.parse(data);
 				

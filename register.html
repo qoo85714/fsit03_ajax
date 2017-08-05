@@ -1,0 +1,86 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+
+<form action="reg.php" onsubmit="return ckForm()">
+
+	Account:<input type="text" name="account" 
+		onblur="ckAccount()" id="account" />
+	<span id="mesg"></span><br/>
+	Password:<input type="password" name="passwd" id="passwd" /><br/>
+	Realname:<input type="text" name="realname" /><br/>
+	<input type="submit" value="register" />
+	
+
+
+
+
+</form>
+
+<script>
+	var isOK = false;
+
+	function ckAccount(){
+		console.log('ckAccount');
+		var accountVal = $("#account").val();
+		var param = {account:accountVal};
+		$.get("ckAccount.php",param,function(data){
+			var jsonObj = JSON.parse(data);
+			
+			if(jsonObj.result !=null && jsonObj.result == 0){
+				console.log('OK');
+				$("#mesg").html('usable');
+				isOK = true;
+				
+			}else{
+				console.log('XX');
+				$("#mesg").html('<font color="red">account exsited</font>');
+				isOK = false;
+			}
+			
+			
+		});
+		
+	}
+	
+	function ckAccountV2(){
+		console.log('ckAccount');
+		var accountVal = $("#account").val();
+		$.ajax({
+			async:true,
+			data:param,
+			url:"ckAccount.php",
+			success:function(data,status,xhr){
+				var jsonObj = JSON.parse(data);
+				
+				if(jsonObj.result !=null && jsonObj.result == 0){
+					console.log('OK');
+					$("#mesg").html('usable');
+					isOK = true;
+					
+				}else{
+					console.log('XX');
+					$("#mesg").html('<font color="red">account exsited</font>');
+					isOK = false;
+				}
+				
+			}
+		});
+		
+	}
+	
+	
+	function ckForm(){
+		console.log("before ckForm");
+		ckAccountV2();
+		console.log("after ckForm");
+		console.log("isOK="+isOK);
+		return false;
+	}
+	
+	
+
+
+
+
+
+</script>

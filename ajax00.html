@@ -1,0 +1,22 @@
+<meta http-equiv="Content-type" content = "text/html;charset =UTF-8">
+<script>
+
+	var member = {
+		id:123,
+		account:"brad",
+		realname:"趙令文",
+		age:51,
+		gender:false,
+		"language":[
+			"Java","PHP","IOS"
+		]
+	};
+	
+	console.log(member.realname);
+	
+	var memberString = JSON.stringify(member);
+	console.log(memberString);
+	
+	var memberObj = JSON.parse(memberString);
+	console.log(memberObj.realname);
+</script>

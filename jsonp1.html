@@ -1,0 +1,29 @@
+<script>
+	function myFunc(obj){
+		alert('OK');
+	}
+
+
+</script>
+<!--  
+<script src="http://www.brad.tw/ajaxtest/jsonp1.php"></script>
+-->
+
+
+<!--  
+<script src="http://10.21.200.66:1717/brad/jsonp1.php"></script>
+-->
+
+<script>
+	function test1(where){
+		var s = document.createElement("script");
+		s.src = "http://10.21.200.66:1717/brad/jsonp1.php?where="+where;
+		document.body.appendChild(s);
+		
+	}
+
+
+</script>
+<button onclick="test1('here4')">Test1</button>
+<div id ="here4"></div>
+
